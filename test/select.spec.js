@@ -2220,6 +2220,11 @@ describe('ui-select tests', function() {
       expect(searchEl.length).toEqual(1);
       expect(searchEl[0].id).toEqual('inid');
     });
+
+    it('should properly check for empty if required', function () {
+      var el = createUiSelectMultiple({required: true});
+      expect(el.hasClass('ng-invalid-required')).toBeTruthy();
+    });
   });
 
   it('should add an id to the search input field', function () {

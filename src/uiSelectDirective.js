@@ -61,6 +61,11 @@ uis.directive('uiSelect',
         //Set reference to ngModel from uiSelectCtrl
         $select.ngModel = ngModel;
 
+        //Properly check for empty if set to multiple
+        ngModel.$isEmpty = function(value) {
+          return !value || angular.isDefined(attrs.multiple) && value.length === 0;
+        };
+
         $select.choiceGrouped = function(group){
           return $select.isGrouped && group && group.name;
         };
